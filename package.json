@@ -1,40 +1,53 @@
 {
-  "name": "production_template",
-  "version": "1.0.0",
-  "description": "template for production server set up",
-  "main": "src/server.js",
-  "type": "module",
-  "scripts": {
-    "dev": "nodemon src/server.ts",
-    "dist": "npx tsc",
-    "start": "node dist/server.js",
-    "lint": "eslint",
-    "lint-fix": "eslint --fix",
-    "format-check": "prettier . --check",
-    "format-fix": "prettier . --write",
-    "prepare": "husky"
-  },
-  "author": "Pankaj",
-  "license": "ISC",
-  "lint-staged": {
-    "*.ts": [
-      "npm run lint-fix",
-      "npm run format-fix"
-    ]
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-conventional": "^19.8.1",
-    "@eslint/js": "^9.29.0",
-    "@types/node": "^24.0.3",
-    "eslint": "^9.29.0",
-    "eslint-config-prettier": "^10.1.5",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.1.2",
-    "nodemon": "^3.1.10",
-    "prettier": "3.5.3",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.3",
-    "typescript-eslint": "^8.34.1"
-  }
+    "name": "production_template",
+    "version": "1.0.0",
+    "description": "template for production server set up",
+    "main": "src/server.js",
+    "type": "module",
+    "scripts": {
+        "dev": "cross-env NODE_ENV=dev nodemon dist/server.js",
+        "build": "npx tsc",
+        "start": "cross-env NODE_ENV=prod node dist/server.js",
+        "lint": "eslint",
+        "lint-fix": "eslint --fix",
+        "format-check": "prettier . --check",
+        "format-fix": "prettier . --write",
+        "prepare": "husky"
+    },
+    "author": "Pankaj",
+    "license": "ISC",
+    "lint-staged": {
+        "*.ts": [
+            "npm run lint-fix",
+            "npm run format-fix"
+        ]
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^19.8.1",
+        "@commitlint/config-conventional": "^19.8.1",
+        "@eslint/js": "^9.29.0",
+        "@types/cors": "^2.8.19",
+        "@types/express": "^5.0.3",
+        "@types/node": "^24.0.3",
+        "eslint": "^9.29.0",
+        "eslint-config-prettier": "^10.1.5",
+        "husky": "^9.1.7",
+        "lint-staged": "^16.1.2",
+        "nodemon": "^3.1.10",
+        "prettier": "3.5.3",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.8.3",
+        "typescript-eslint": "^8.34.1"
+    },
+    "dependencies": {
+        "colorette": "^2.0.20",
+        "cors": "^2.8.5",
+        "cross-env": "^7.0.3",
+        "dotenv-flow": "^4.1.0",
+        "express": "^5.1.0",
+        "helmet": "^8.1.0",
+        "moment-timezone": "^0.6.0",
+        "rate-limiter-flexible": "^7.1.1",
+        "winston": "^3.17.0"
+    }
 }
